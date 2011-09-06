@@ -1,0 +1,53 @@
+, PID
+, (-4)
+, (-3)
+, (-2)
+, (-1)
+				, 5
+				, 7
+	, 4
+				, 8
+				, 9
+				, 10
+				, 3
+				, 12
+				, 13
+				, 6
+init, 1
+				init, 17
+				init, 19
+				init, 23
+				init, 25
+				init, 34
+				init, 39
+				init, 66
+				init, 77
+				init, 83
+				init, 90
+				init, 105
+				init, 108
+				init, 111
+				init, 114
+																																																																																																																																																																																			less, 328
+	update, 117
+	cron, 119
+	syslogd, 123
+	dhcpd, 126
+	nonamed, 128
+																																																																																																																																																																																		hw1, 365
+																																																																																																																																																																																																																																																																																																																																																																													sh, 366
+																																																																																																																																																																																																																																																																																																																																																																														sh, 367
+	sshd, 142
+	bash, 143
+	getty, 144
+	getty, 145
+	getty, 146
+	xdm, 150
+																																																																																																																																																						xdm, 153
+																																																																																																																																																						xdm, 154
+																																																																																																																																																										twm, 172
+																																																																																																																																																																												xbiff, 175
+																																																																																																																																																																												xterm, 176
+																																																																																																																																																																												xterm, 177
+																																																																																																																																																																																	bash, 178
+																																																																																																																																																																																bash, 179
