@@ -21,9 +21,9 @@ int main(){
      /* we ingore the return value of t_insert */
 	 while ( fgets( line, sizeof line, fp)){  //Stream gets, grabs from stream, stores in line, grabs until \n reached
 
-		sscanf(line,"%*s %*s %*s %s %d %*s %*s  %*s %s %s  %s",pid,&ppid,extra,extra2,cmd);
+		sscanf(line,"%*s %*s %*s %s %d %*s %s  %*s %s %s  %s",pid,&ppid,extra,extra3,extra2,cmd);
 		int i;
-		printf("%s,%d,%s,%s,%s\n",pid,&ppid,extra,extra2,cmd);
+	//	printf("%s,%d,%s,%s,%s\n",pid,&ppid,extra,extra2,cmd);
 	
 
 	if(strcmp(cmd,c)==0){
@@ -37,6 +37,9 @@ int main(){
 		}
 		if(strncmp(cmd,"",1)==0){
 			printf("!%s,%s\n",extra2,pid);
+		}
+		else if(strncmp(cmd,"0:",2)==0){
+			printf("@%s,%s\n",extra3,pid);
 		}
 		else{
 			printf("%s,%s\n",cmd,pid);
