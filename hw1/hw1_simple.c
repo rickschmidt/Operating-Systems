@@ -13,7 +13,7 @@ int main(){
 	char cmd[200];
 	char pid[200];
 	int ppid;
-	char c[200]="CMD";
+	char c[200]="PID";
 	char extra[200];
 	char extra2[200];
 	char extra3[200];
@@ -26,20 +26,20 @@ int main(){
 	//	printf("%s,%d,%s,%s,%s\n",pid,&ppid,extra,extra2,cmd);
 	
 
-	if(strcmp(cmd,c)==0){
-		  return(0);  
+	if(strcmp(pid,c)==0){
+		  printf("");
 		}
 		else{	
 
-
+		
 		for(i=0;i<(ppid);i++){
 			printf("-\t");
 		}
 		if(strncmp(cmd,"",1)==0){
-			printf("!%s,%s\n",extra2,pid);
+			printf("%s,%s\n",extra2,pid);
 		}
 		else if(strncmp(cmd,"0:",2)==0){
-			printf("@%s,%s\n",extra3,pid);
+			printf("%s,%s\n",extra3,pid);
 		}
 		else{
 			printf("%s,%s\n",cmd,pid);
