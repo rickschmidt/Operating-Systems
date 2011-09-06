@@ -5,14 +5,14 @@
 
  
 
-struct Nodes{
-		char *cmd; //Holds info for node
-		char *pid;
-		char *ppid;
+typedef struct Nodes{
+		char ncmd[20]; //Holds info for node
+		char npid[20];
+		char nppid[20];
 		std::vector<Nodes> children;
 		
 
-		};
+		}Nodes;
 		
 		
 int main(int argc, char* argv[]) {
@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
 	
 		
 	// typedef struct Nodes *NODEPTR;	
-	typedef std::vector<Nodes>tree;	
+//	typedef std::vector<Nodes>tree;	
 		
 		// tree myTree;
 		// 		Nodes mynodes;
@@ -49,10 +49,11 @@ int main(int argc, char* argv[]) {
 		// printf("mynodes.data %s, and data of next is %s",mynodes.data,mynodes.children->front);
 		 // myTree.push_back(mynodes);
 		
-		Nodes root;
+		struct Nodes root;
+		struct Nodes subtree;
 	 while ( fgets( line, sizeof line, fp)){  //Stream gets, grabs from stream, stores in line, grabs until \n reached
 	
-		sscanf(line,"%*s %*s %*s %*s %*s %*s %s %s %*s %*s %*s %s",pid,ppid,cmd);
+		sscanf(line,"%*s %*s %*i %*s %*s %*s %s %s %*s %*s %*s %s",pid,ppid,cmd);
 	
 			//printf("The cmd is %s the pid is %s and the ppid is %s\n",cmd,pid,ppid);
 	
@@ -63,11 +64,18 @@ int main(int argc, char* argv[]) {
 		}
 		//Root
 		if(strcmp(ppid,zero)==0){
-			root.cmd=cmd;
-			root.pid=pid;
-			root.ppid=ppid;
-			printf("The root command is %s, the pid is %s and ppid is %s\n",cmd,pid,ppid);
+			strcpy(subtree.ncmd,cmd);
+			strcpy(subtree.npid,pid);
+			strcpy(subtree.nppid,ppid);
+			printf("The root command is %s, the pid is %s and ppid is %s\n",subtree.ncmd,subtree.npid,subtree.nppid);
+			root=subtree;
 		}
+		
+		// printf("%s\n",root.npid);
+		// if(strcmp(ppid,root.pid)==0){
+		// 	printf("yes");
+		// 	
+		// }
 	
 	
 	
