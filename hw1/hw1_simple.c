@@ -1,14 +1,19 @@
+/*
+Rick Schmidt
+Comp 410
+HW1
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 int main(){
-      /* construct tree by hand */
-	FILE *fp;
+     	FILE *fp;
 
-  	char line[100];			//Will hold onto string, each line from stream gets
+  	char line[100];			
 	fp = popen("ps -axl", "r");
 
-    //  struct tree_node *tp, *root_p = 0;
+    
 
 	char cmd[200];
 	char pid[200];
@@ -18,8 +23,8 @@ int main(){
 	char extra2[200];
 	char extra3[200];
 
-     /* we ingore the return value of t_insert */
-	 while ( fgets( line, sizeof line, fp)){  //Stream gets, grabs from stream, stores in line, grabs until \n reached
+     
+	while ( fgets( line, sizeof line, fp)){  //Stream gets, grabs from stream, stores in line, grabs until \n reached
 
 		sscanf(line,"%*s %*s %*s %s %d %*s %s  %*s %s %s  %s",pid,&ppid,extra,extra3,extra2,cmd);
 		int i;
@@ -27,7 +32,7 @@ int main(){
 	
 
 	if(strcmp(pid,c)==0){
-		  printf("");
+		 
 		}
 		else{	
 
