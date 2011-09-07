@@ -12,6 +12,23 @@ and saw that we were creating "nodes" and not nodes and that the crux of the ass
 system calls.  I was able to quickly adapt my earlier failed attempts into a much simpler design that prints a "tree" 
 and not a tree.
 
+
+Thre program prints a matrix represenation of a tree.  The ppid is the column, a process prints its pid and command name in the column of its ppid.  
+Example
+ps output>
+PPID PID CMD
+0    1   init
+1    2   idle
+1    3   memory
+2    4   swap
+
+would result in...
+
+1,init	-	-
+-	2,idle	-
+-	3,memory-
+-	-	4,swap
+
 */
 
 #include <stdio.h>
