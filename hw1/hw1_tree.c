@@ -41,68 +41,111 @@ struct Nodes{
 		
 
 		};
-int insert(struct Nodes **root,  char *cmd, char *ppid, char *pid){
+struct Nodes * insert(struct Nodes **root,  char *cmd, char *ppid, char *pid){
+	// printf("root: %s\n",(*root));
+				// printf("Creating new\n");
+				// 				struct Nodes *tree;
+				// 					    		tree=malloc(100);
+				// 								// tree=malloc(100);
+				// 								// (*root)->subtree=&tree;
+				// 								(tree)->ncmd=cmd;
+				// 					    	  	(tree)->npid=pid;
+				// 					    	     (tree)->nppid=ppid;
+				// 								(*root)->subtree=&tree;
+				// 							printf("New created with %s , ppid %s, pid %s\n\n",(tree)->ncmd,(tree)->nppid, (tree)->npid);
 		while(*root){
 			// (*root)->npid="1"; //simulate for now remove later
 			// if(*root){
-				// printf(" npid %s, :ppid %s, :pid %s\n",(*root)->npid,ppid,pid);
+		
+			
+
+				printf(" npid %s, :ppid %s, :pid %s , :compare %d :ncmd %s, cmd: %s\n",(*root)->npid,ppid,pid,strcmp((*root)->npid,ppid),(*root)->ncmd, cmd);
 				if(strcmp((*root)->npid,ppid)==0){
 					printf("equals\n");
-					return(1);
+					*root=malloc(100);
+								// tree=malloc(100);
+								// (*root)->subtree=&tree;
+								(*root)->subtree=0;
+								(*root)->ncmd=strdup(cmd);
+												    	  	(*root)->npid=strdup(pid);
+												    	     (*root)->nppid=strdup(ppid);
+					return(*root);
 				} 
 						
 				if (strcmp((*root)->npid,ppid)!=0){
 					// printf("new root %s\n", *root);
-					root=&((*root)->subtree);							
+					// printf("subtree pid: %s\n\n", (*root)->npid);							
+					root=&((*root)->subtree);
+
+					// *root=(*root)->subtree;
+					// printf("subtree pid: %s\n", (*root)->npid);							
 				} 
 			}
+			// return(1);
+			
 		// }
 		
 		//This is just updating the pointers, not creating new uniques
-    	*root=malloc(100);
-        (*root)->ncmd=cmd;
-                	    	(*root)->npid=pid;
-                	    	(*root)->nppid=ppid;
-        
-		struct Nodes *node;
-		node=malloc(100);
-		(*node).ncmd=cmd;
-		(*node).nppid=ppid;
-		(*node).npid=pid;
+			// printf("Creating new\n");
+			printf("new\n");
+					    		*root=malloc(100);
+								// tree=malloc(100);
+								// (*root)->subtree=&tree;
+								(*root)->subtree=0;
+								(*root)->ncmd=strdup(cmd);
+												    	  	(*root)->npid=strdup(pid);
+												    	     (*root)->nppid=strdup(ppid);
+							// printf("New created with %s , ppid %s, pid %s\n\n",(*root)->ncmd,(*root)->nppid, (*root)->npid);
+			//     	              
+		// struct Nodes *node;
+		// 	node=malloc(100);
+		// 	node->ncmd=cmd;
+		// 	node->npid=pid;
+		// 	node->nppid=ppid;
+		// 	printf("Node: npid %s\n", node->npid);
 		
-		(*root)->subtree=node;
-    return(0);
+		// (*root)->subtree=node;
+		// printf("Subtree: %p\n", (*root)->subtree);
+    return(*root);
 }
 
-struct Nodes* NewNode(char *cmd, char *pid,char *ppid) { 
-	struct Nodes* node=0; 
-	node=malloc(100);    // "new" is like "malloc" 
-	    node->ncmd = cmd; 
-	  node->npid=pid;
-	  node->nppid=ppid;
-	    node->subtree = NULL; 
-
-
-  return(node); 
-} 
-int insert2(struct Nodes *root, char *cmd, char *ppid, char *pid){
-	if (root==NULL) { 
-    	return(NewNode(cmd,pid,ppid)); 
-  } 
-  else { 
-    // 2. Otherwise, recur down the tree 
-    if (ppid==root->npid) root->subtree = insert2(root->subtree, cmd,ppid,pid); 
-	return(1);
-}
-}
+int i=0;
 void print(struct Nodes *root){
-	if(root->subtree){
-		print(root->subtree);
-		printf("%s\n",root->ncmd);
-	}
-         return;
-      print(root->subtree);
+	
+	
+		// printf("\t%s, %s, %s\n",root->ncmd,root->npid, root->nppid);
+				if(root->subtree){
+							printf("\t %d. %s, %s, %s\n",i,root->ncmd,root->npid, root->nppid);
+							i=i+1;
+					print(root->subtree);
+				}
+		// printf("\t %d. %s, %s, %s\n",i,root->ncmd,root->npid, root->nppid);
+		i=i+1;
+		// print(root);
+				
+			// if(root->subtree){
+			// 					// if(strcmp(root->npid,root->subtree->nppid)>0){
+			// 					// 	printf("\t");
+			// 					// }
+			// 					print(root->subtree);
+			// 					printf("\t%s, %s, %s\n",root->ncmd,root->npid, root->nppid);
+			// 				}
+			// 			         // return;
+			// 			      print(root);
 
+}
+
+void print2(struct Nodes *root){
+	if(strcmp(root->npid,root->subtree->nppid)==0){
+		printf("Equals: %s, %s, %s\n",root->ncmd,root->npid, root->nppid);
+		print2(root->subtree);
+	}
+	if(strcmp(root->npid,root->subtree->nppid)<0){
+		printf("!=\t\t%s, %s, %s\n",root->ncmd,root->npid, root->nppid);
+		// print2(root->subtree);
+	}
+	return;
+	print2(root->subtree);
 }
 
 int main(){
@@ -114,9 +157,9 @@ int main(){
 
     
 
-	char cmd[200];
-	char pid[200];
-	char ppid[200];
+	char cmd[40];
+	char pid[40];
+	char ppid[40];
 	// char c[200]="PID";
 	/*These 'extra' variables hold onto the cases on minix when the ps command prints an empty column that is not read by sscanf
 		Example:  Sometimes the line may be pid ppid extra?  command  and sometimes pid pppid command.  
@@ -131,16 +174,16 @@ int main(){
 	// char extra[200];  
 	// char extra2[200];
 	// char extra3[200];
-	struct Nodes *tree=0;
-	// tree=malloc(100);
+	struct Nodes *tree;
+	 // tree=malloc(1000);
 	// 	tree=0;
-	printf("tree: %d\n", tree);
+//	printf("tree: %d\n", &tree);
 	while ( fgets( line, sizeof line, fp)){  //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
 
 		// sscanf(line,"%*s %*s %*s %s %s %*s %s  %*s %s %s  %s",pid,ppid,extra,extra3,extra2,cmd); //sscanf scans the line and places the interesting content into the proper variables.  
 	sscanf(line,"%*s %*s %*s %*s %*s %*s %s %s %*s %*s %*s  %s",pid,ppid,cmd); //sscanf scans the line and places the interesting content into the proper variables.  
 		if(strcmp(pid,"PID")!=0){
-			// printf("CMD: %s, PPID: %s, PID: %s\n",cmd,ppid,pid);
+		//	printf("CMD: %s, PPID: %s, PID: %s\n",cmd,ppid,pid);
 			insert(&tree,cmd,ppid,pid);
 			// print(tree);
 			// printf("Tree PID: %s\n\n",tree->npid);
@@ -148,32 +191,9 @@ int main(){
 		}
 		
 
-		
-		
 	
-
-	// if(strcmp(pid,c)==0){
-	// 		 //Ignores header
-	// 		}
-	// 	else{	
-	// 
-	// 		int i;
-	// 		for(i=0;i<(ppid);i++){
-	// 			printf("-\t");
-	// 		}
-	// 		if(strncmp(cmd,"",1)==0){  //handles cases when there is an extra column type on certain lines in minix
-	// 			printf("%s,%s\n",extra2,pid);
-	// 		}
-	// 		else if(strncmp(cmd,"0:",2)==0){  //handles cases of the time being 'expanded' on a line in minix
-	// 			printf("%s,%s\n",extra3,pid);
-	// 		}
-	// 		else{
-	// 			printf("%s,%s\n",cmd,pid);  //Most lines are processed here
-	// 		}
-	// 		}
-	// 	
-	// 		
 		}
+		printf("tree: %s\n", (tree)->subtree->ncmd);
 				print(tree);
 	return(0);
 }
