@@ -109,8 +109,8 @@ int main(){
      	FILE *fp;
 
   	char line[100];			
-	// fp = popen("ps -axl", "r");
-	fp = popen("ps -ax -c -o uid,uid,uid,uid,uid,uid,pid,ppid,uid,uid,uid,command", "r");
+	 fp = popen("ps -axl", "r");
+	//fp = popen("ps -ax -c -o uid,uid,uid,uid,uid,uid,pid,ppid,uid,uid,uid,command", "r");
 
     
 
