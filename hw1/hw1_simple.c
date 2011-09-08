@@ -4,15 +4,7 @@ Comp 410
 HW1
 */
 
-/*
-I began the project trying to create my own tree structure with structs.  I used the information at 
-http://publications.gbdirect.co.uk/c_book/chapter6/structures.html#section-3
-as a starting point after my first attempts.  After some headaches dealing with pointers I re-read the assignment 
-and saw that we were creating "nodes" and not nodes and that the crux of the assignment was working with pipes and 
-system calls.  I was able to quickly adapt my earlier failed attempts into a much simpler design that prints a "tree" 
-and not a tree.
 
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,8 +29,7 @@ int main(){
 		Example: 	fp = popen("ps -ax -c -o pid,ppid,command", "r");
 		
 		The following command was used to simulate the minix 'full' output during some development work on OSX.
-			fp = popen("ps -ax -c -o uid,uid,uid,uid,uid,uid,pid,ppid,uid,uid,uid,command", "r");
-		
+			fp = popen("ps -ax -c -o uid,uid,uid,uid,uid,uid,pid,ppid,uid,uid,uid,command", "r");		
 	*/
 	char extra[200];  
 	char extra2[200];
