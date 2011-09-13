@@ -19,6 +19,15 @@ struct Nodes{
 
 		};
 		
+		void print_tree(struct Nodes *n){
+			if(n==0)
+				return;
+			print_tree(n->previous);
+			printf("%s\n",n->ncmd);
+						print_tree(n->next);
+			
+		}
+		
 		int insert(struct Nodes **n,  char *cmd, char *ppid, char *pid){
 			
       // while(*root){
@@ -45,15 +54,17 @@ struct Nodes{
 					else if  (strcmp((*n)->npid,ppid)<0){
 
 					  n= &((*n)->next);
+												printf("The cmd 3 in is %s\n",&n->ncmd);
 					}
-					
+
 			}
 			*n=malloc(100);
 			(*n)->ncmd=cmd;
 			(*n)->npid=pid;
 			(*n)->nppid=ppid;
-			printf("%s %s %s\n",((*n)->ncmd), ((*n)->nppid), ((*n)->npid));
-;
+//			printf("%s %s %s\n",((*n)->ncmd), ((*n)->nppid), ((*n)->npid));
+		// printf("The cmd 3 in is %s",(*n)->next->ncmd);
+				// printf("The cmd 3 in is %s",(*n)->next->next->next->next->ncmd);
 
 					return(0);
 				}
@@ -157,7 +168,7 @@ int main(int argc, char* argv[]) {
 		// printf("mynodes.data %s, and data of next is %s",mynodes.data,mynodes.children->front);
 		 // myTree.push_back(mynodes);
 
-		struct  Nodes  *root;
+		struct  Nodes  *root=0;
 
 		// printf("root %s\n",(root->ncmd));
 		// *root=malloc(sizeof(struct Nodes));
@@ -174,6 +185,9 @@ int main(int argc, char* argv[]) {
 		
 		
 	}
+		printf("The cmd 3 in is %s",(root)->next->next->ncmd);
+				printf("The cmd 3 in is %s",(root)->next->next->next->next->ncmd);
+	// print_tree(root);
 		// printf("%s",*root->ncmd);
 		//Ignore header
 		// if(strcmp(ppid,command)==0){
