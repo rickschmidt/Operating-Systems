@@ -41,7 +41,7 @@ struct Nodes{
 		
 
 		};
-int insert(struct Nodes **n,  char *cmd, char *ppid, char *pid){
+int insert(struct Nodes **root,  char *cmd, char *ppid, char *pid){
 			
       // while(*tree){
       //                   if((*tree)->data == v)
@@ -53,38 +53,70 @@ int insert(struct Nodes **n,  char *cmd, char *ppid, char *pid){
       //           }
      
     		
-    			while(*n){
-    					if(&((*n)->npid)!=NULL){
-							printf("test: %s\n", (*n)->npid);
+    			while(*root){
+					// char test[10];
+					// 					test=malloc(100);
+					printf("while");
+					char test=((*root)->npid);
+
+    					// if(&((*n)->npid)!=NULL){
+							//entry point for root
+
+    					// if(strcmp(&(*root)->npid,"")!=0){   
+							printf("test: %s\n", (*root)->npid);
 							// printf("size of npid %d\n",sizeof((*n)->npid));
-							(*n)->npid="test";
-							printf("test2: %s\n", (*n)->npid);
-							printf("If %d\n",strcmp((*n)->npid,ppid));
+							(*root)->npid="1"; //simulate for now remove later
+
+							if(strcmp((*root)->npid,ppid)==0){
+								printf("equals\n");
+								return(1);
+							} //end equals
+						
+							
+
+
+					
+								
+
+							// printf("test2: %s\n", (*root)->nppid);
+							// printf("If %d\n",strcmp((*root)->nppid,pid));
 							
 
 								// if(strcmp((*n)->npid,ppid)==0){
-    					    						printf("npid is %s and ppid is %s\n",((*n)->npid),ppid);
+    					    // printf("npid is %s and ppid is %s\n",((*root)->npid),ppid);
     					    					
-    					    						return(1);
-    					    						}
-    					    						else if (strcmp((*n)->npid,ppid)>0){
-    					    						// printf("npid is %s and ppid is %s\n",((*n)->npid),ppid);
-    					    	
-    					    						  n= &((*n)->subtree);
-    					    						}
-    					    						else if  (strcmp((*n)->npid,ppid)<0){
-    					    	
-    					    						  n= &((*n)->subtree);
-    					    													printf("The cmd 3 in is %s\n",(*n)->ncmd);
-    					    						}
+   							// return(1);
+   						 //end if !=0
+													// return(1);
+						
+						if (strcmp((*root)->npid,ppid)!=0){
+							root=&((*root)->subtree);
+							printf("root: %d\n",sizeof(root));
+						} //end else if																		// (*root)->nppid=ppid;
+					// }
+																// 						// 																			(*root)->npid=pid;
+																// 						// 																			(*root)->ncmd=cmd;
+																					
+																						// printf("hi %s\n",&(root).ncmd);
+																				
+    					    						// else if (strcmp((*n)->npid,ppid)>0){
+    					    						//     					    						// printf("npid is %s and ppid is %s\n",((*n)->npid),ppid);
+    					    						//     					    	
+    					    						//     					    						  n= &((*n)->subtree);
+    					    						//     					    						}
+    					    						//     					    						else if  (strcmp((*n)->npid,ppid)<0){
+    					    						//     					    	
+    					    						//     					    						  n= &((*n)->subtree);
+    					    						//     					    													printf("The cmd 3 in is %s\n",(*n)->ncmd);
+    					    						//     					    						}
     					    	
 
-    				}
-    				*n=malloc(100);
-    				(*n)->ncmd=cmd;
-    				(*n)->npid=pid;
-    				(*n)->nppid=ppid;
-    	//			printf("%s %s %s\n",((*n)->ncmd), ((*n)->nppid), ((*n)->npid));
+    				} //end while 
+    				*root=malloc(100);
+    				(*root)->ncmd=cmd;
+    				(*root)->npid=pid;
+    				(*root)->nppid=ppid;
+    				printf("End: %s %s %s\n",((*root)->ncmd), ((*root)->nppid), ((*root)->npid));
     			// printf("The cmd 3 in is %s",(*n)->next->ncmd);
     					// printf("The cmd 3 in is %s",(*n)->next->next->next->next->ncmd);
     
@@ -113,9 +145,9 @@ int main(){
 		The following command was used to simulate the minix 'full' output during some development work on OSX.
 			fp = popen("ps -ax -c -o uid,uid,uid,uid,uid,uid,pid,ppid,uid,uid,uid,command", "r");		
 	*/
-	char extra[200];  
-	char extra2[200];
-	char extra3[200];
+	// char extra[200];  
+	// char extra2[200];
+	// char extra3[200];
 	struct Nodes *tree;
 	tree=malloc(100);
 	printf("tree: %s\n", tree->ncmd);
@@ -123,7 +155,11 @@ int main(){
 
 		// sscanf(line,"%*s %*s %*s %s %s %*s %s  %*s %s %s  %s",pid,ppid,extra,extra3,extra2,cmd); //sscanf scans the line and places the interesting content into the proper variables.  
 	sscanf(line,"%*s %*s %*s %*s %*s %*s %s %s %*s %*s %*s  %s",pid,ppid,cmd); //sscanf scans the line and places the interesting content into the proper variables.  
-		insert(&tree,cmd,ppid,pid);
+		if(strcmp(pid,"PID")!=0){
+
+			insert(&tree,cmd,ppid,pid);
+			printf("Tree: %s\n",tree->ncmd);
+		}
 	
 
 	// if(strcmp(pid,c)==0){
