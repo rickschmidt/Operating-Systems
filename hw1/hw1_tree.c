@@ -43,10 +43,23 @@ struct Nodes{
 		};
 int insert(struct Nodes **root,  char *cmd, char *ppid, char *pid){
 	printf("root: %s\n",(*root));
+				// printf("Creating new\n");
+				// 				struct Nodes *tree;
+				// 					    		tree=malloc(100);
+				// 								// tree=malloc(100);
+				// 								// (*root)->subtree=&tree;
+				// 								(tree)->ncmd=cmd;
+				// 					    	  	(tree)->npid=pid;
+				// 					    	     (tree)->nppid=ppid;
+				// 								(*root)->subtree=&tree;
+				// 							printf("New created with %s , ppid %s, pid %s\n\n",(tree)->ncmd,(tree)->nppid, (tree)->npid);
 		while(*root){
 			// (*root)->npid="1"; //simulate for now remove later
 			// if(*root){
-				printf(" npid %s, :ppid %s, :pid %s , :compare %d\n",(*root)->npid,ppid,pid,strcmp((*root)->npid,ppid));
+			int i=0;
+			
+
+				// printf(" npid %s, :ppid %s, :pid %s , :compare %d\n",(*root)->npid,ppid,pid,strcmp((*root)->npid,ppid));
 				if(strcmp((*root)->npid,ppid)==0){
 					printf("equals\n");
 					return(1);
@@ -56,20 +69,28 @@ int insert(struct Nodes **root,  char *cmd, char *ppid, char *pid){
 					// printf("new root %s\n", *root);
 					printf("subtree pid: %s\n\n", (*root)->npid);							
 					root=&((*root)->subtree);
+					i=i+1;
+					printf("I: %d\n",i);
 					// *root=(*root)->subtree;
 					// printf("subtree pid: %s\n", (*root)->npid);							
 				} 
 			}
+			// return(1);
+			
 		// }
 		
 		//This is just updating the pointers, not creating new uniques
 			printf("Creating new\n");
-    	*root=malloc(100);
-    	        (*root)->ncmd=cmd;
-    	  (*root)->npid=pid;
-    	      (*root)->nppid=ppid;
-			printf("New created with %s , ppid %s, pid %s\n\n",(*root)->ncmd,(*root)->nppid, (*root)->npid);
-    	              
+
+					    		*root=malloc(100);
+								// tree=malloc(100);
+								// (*root)->subtree=&tree;
+								(*root)->subtree=0;
+								(*root)->ncmd=strdup(cmd);
+												    	  	(*root)->npid=strdup(pid);
+												    	     (*root)->nppid=strdup(ppid);
+							printf("New created with %s , ppid %s, pid %s\n\n",(*root)->ncmd,(*root)->nppid, (*root)->npid);
+			//     	              
 		// struct Nodes *node;
 		// 	node=malloc(100);
 		// 	node->ncmd=cmd;
@@ -142,14 +163,14 @@ int main(){
 	struct Nodes *tree=0;
 	// *tree=malloc(100);
 	// 	tree=0;
-	printf("tree: %d\n", tree);
+	printf("tree: %d\n", &tree);
 	while ( fgets( line, sizeof line, fp)){  //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
 
 		// sscanf(line,"%*s %*s %*s %s %s %*s %s  %*s %s %s  %s",pid,ppid,extra,extra3,extra2,cmd); //sscanf scans the line and places the interesting content into the proper variables.  
 	sscanf(line,"%*s %*s %*s %*s %*s %*s %s %s %*s %*s %*s  %s",pid,ppid,cmd); //sscanf scans the line and places the interesting content into the proper variables.  
 		if(strcmp(pid,"PID")!=0){
 			printf("CMD: %s, PPID: %s, PID: %s\n",cmd,ppid,pid);
-			insert(&tree,cmd,ppid,pid);
+			insert(&tree,&cmd,&ppid,&pid);
 			// print(tree);
 			// printf("Tree PID: %s\n\n",tree->npid);
 			
