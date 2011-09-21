@@ -15,11 +15,18 @@ char pid[10]="PID";
 char pid_list[10]="PID-list";
 char time[10]="time";
 char kill[10]="kill";
-
-
+pid_t pid1;
+pid_t ppid1;
+ppid1=getppid();
+printf("ppid1 is %d\n",ppid1);
 if(strcmp(argv[1],sleep)==0){
 	printf("sleeping");
 	printf(" for %s\n",argv[2]);
+	fork();
+	pid1=getpid();
+	
+	
+	printf("pid1 is %d",pid1);
 }
 
 if(strcmp(argv[1],list)==0){
