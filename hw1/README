@@ -1,0 +1,5 @@
+There are two attempts at hw1.
+
+hw1_simple.c is a naive approach that prints the input as it reads it from fgets.
+
+hw1_tree.c is an attempt at using structs which almost worked.  The command name points to the last command.  Looking back I see some design problems now that I have more experience with C but I had to move on to other work.  
