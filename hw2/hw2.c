@@ -33,7 +33,10 @@ int main(int argc, char* argv[]) {
 	int sizeOfList;
 	int listofpids[100];
 	int *listposition;
-
+	char readBuffer[10];
+	 int     fd[2];
+			int pipe;
+			FILE *fp;
 	// ppid1=getppid();
 	// printf("ppid1 is %d\n",ppid1);
 	// printf("size of array: %zu\n",sizeof(listofpids)/8);
@@ -43,8 +46,10 @@ int main(int argc, char* argv[]) {
 		printf("sleeping");
 		printf(" for %s\n",argv[2]);
 		printf("pid1 is %d\n",pid1);
-
+		//sigiot alias for SIGABRT
+		//When abort signal is received; ignore it
 		signal(SIGIOT,SIG_IGN);
+
 		pidholder=fork();
 		 // pidholder=listofpids[listposition];
 		printf("pidholder1 %d\n",pidholder);
@@ -56,18 +61,31 @@ int main(int argc, char* argv[]) {
 				int n=atoi(argv[2]);
 				sleep(n);
 				int s;
-				s=wait(&pid1);
+				// s=wait(&status);
+				
+				fp=fopen("pid_list","w");
+				fprintf(fp,"");
+				fclose(fp);
+				
 				printf("\tchild pid2 is %d\n",pid2);
 				printf("\tchilds is %d\n", s);
+
 			}
-		else{
-			int pipe;
-				pipe = open("pids", O_WRONLY);
-				write(pipe, pidholder, sizeof(pidholder));
-				
-					printf("listofpids in else:  %d\n",listofpids[0]);
-			
-	
+			// printf("pidholder after if %d\n",pidholder);
+			else{
+			printf("In else\n");
+
+			printf("pidholder %d\n",pidholder);
+							// pipe = open("pids", O_WRONLY);
+							// pipe(fd);
+							// close(fd[0]);
+					FILE *fp ;
+					fp = fopen ("pid_list","a+");
+					fprintf(fp,"%d\n",getpid(pidholder)); /*writes*/ 
+					fclose(fp); 
+			// 					printf("listofpids in else:  %d\n",listofpids[0]);
+			// 			
+			// 					exit(0);
 		}
 	
 	
@@ -76,13 +94,23 @@ int main(int argc, char* argv[]) {
 	}
 
 	if(strcmp(argv[1],list)==0){
-		printf("list");
-		int pipe;
-		pipe=open("pids",  O_RDONLY);
-		read(pipe,listofpids,sizeof(listofpids));
-		// close(pipe);
-		printf("listofpids in list:  %d\n",listofpids[0]);
-		wait(10);
+		printf("list\n");
+		// close(fd[1]);
+
+		fp=fopen("pid_list","r");
+		char line[100];
+			while(fgets(line, sizeof line, fp) != NULL)
+   			{
+				printf("line: %s\n",line);
+
+
+	   }
+				fclose(fp);
+		int i;
+		// for(i=0; i<sizeof(listofpids);i++){
+		// 	printf("listofpids in list:  %d\n",listofpids[i]);
+		// }
+		// wait(10);
 		// exit(0);
 	}
 
