@@ -107,6 +107,7 @@ int main(int argc, char* argv[]) {
 	   }
 				fclose(fp);
 		int i;
+		printf("Done printing\n");
 		// for(i=0; i<sizeof(listofpids);i++){
 		// 	printf("listofpids in list:  %d\n",listofpids[i]);
 		// }
@@ -115,13 +116,14 @@ int main(int argc, char* argv[]) {
 	}
 
 	if(strcmp(argv[1],wait1)==0){
-		if(strcmp(argv[2],pid)==0){
-			printf("wait PID\n");
-		}
+		pid_t argPid=atoi(argv[2]);
+		printf("argPid is %i\n",argPid);
+		int waitStatus;
+		waitpid(argPid,&waitStatus,WNOHANG);
+		printf("wait status %d\n",waitStatus);
+		
 	
-		if(strcmp(argv[2],pid_list)==0){
-			printf("wait PID-list");
-		}
+		
 	
 
 	}
