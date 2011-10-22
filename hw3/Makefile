@@ -1,8 +1,7 @@
-all: hw3cpu
+all: hw3cpu hw3io
 
-hw3: hw3cpu.o
-	gcc -o hw3cpu hw3cpu.o
+hw3cpu: hw3cpu.c
+	gcc -o hw3cpu hw3cpu.c 
 
-hw3.o: hw3cpu.c
-	gcc -c hw3cpu.c -o hw3cpu.o
-
+hw3io: hw3io.c
+	gcc -o hw3io  hw3io.c
