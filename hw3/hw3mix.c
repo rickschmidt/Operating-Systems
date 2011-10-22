@@ -10,6 +10,8 @@ int main(int argc, char* argv[]){
 	float io_factor;
 	io_factor=atof(argv[2]);
 	pid_t pidholder;
+	time_t start,end;
+	time(&start);
 	pidholder=fork();
 	
 	
@@ -22,8 +24,10 @@ int main(int argc, char* argv[]){
 			//Parent Process
 			io_process(io_factor);
 		}
-
-
+		time(&end);
+		double diff;
+		diff=difftime(end,start);
+		printf("Delta Time Mix: %.21f\n",diff);
 }
 
 
@@ -32,8 +36,7 @@ void cpu_process(float cpu_factor){
 	float j;
 
 
-	time_t start,end;
-	time(&start);
+	
 	printf("Starting CPU Mix..\n");
 	while(i<(100000*cpu_factor)){
 		for(j=0;j<i;j++){
@@ -41,15 +44,11 @@ void cpu_process(float cpu_factor){
 		}
 		i++;
 	}
-	time(&end);
-	double diff;
-	diff=difftime(end,start);
-	printf("Delta Time CPU Mix: %.21f\n",diff);
+
 }
 
 void io_process(float io_factor){
-	time_t start,end;
-	time(&start);
+	
 	
 	printf("Starting IO Mix..\n");
 	FILE *fp;
@@ -63,9 +62,6 @@ void io_process(float io_factor){
 		fclose(fp);
 		i++;
 	}
-	time(&end);
-	double diff;
-	diff=difftime(end,start);
-	printf("Delta Time IO Mix: %.21f\n",diff);
+
 
 }

@@ -1,8 +1,8 @@
 #!/usr/pkg/bin/bash
 START=$(date +%s)
-./hw3io &
-./hw3cpu &
-./hw3mix .5 .5 &
+./hw3io 2 &
+./hw3cpu 2 &
+./hw3mix 1 2 &
 wait
 END=$(date +%s)
 DIFF=$(($END-$START))
