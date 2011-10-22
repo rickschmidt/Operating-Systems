@@ -28,6 +28,6 @@ int main(int argc, char* argv[]){
 	time(&end);
 	double diff;
 	diff=difftime(end,start);
-	printf("Delta Time CPU: %.21f\n",diff);
+	printf("Delta Time IO: %.21f\n",diff);
 	exit(0);	
 }

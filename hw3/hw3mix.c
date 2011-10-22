@@ -23,6 +23,7 @@ int main(int argc, char* argv[]){
 			io_process(io_factor);
 		}
 
+
 }
 
 
@@ -33,7 +34,7 @@ void cpu_process(float cpu_factor){
 
 	time_t start,end;
 	time(&start);
-	printf("Starting CPU..\n");
+	printf("Starting CPU Mix..\n");
 	while(i<(100000*cpu_factor)){
 		for(j=0;j<i;j++){
 			i/j;
@@ -43,14 +44,14 @@ void cpu_process(float cpu_factor){
 	time(&end);
 	double diff;
 	diff=difftime(end,start);
-	printf("Delta Time CPU: %.21f\n",diff);
+	printf("Delta Time CPU Mix: %.21f\n",diff);
 }
 
 void io_process(float io_factor){
 	time_t start,end;
 	time(&start);
 	
-	printf("Starting IO..\n");
+	printf("Starting IO Mix..\n");
 	FILE *fp;
 	float i;
 	float j;
@@ -65,6 +66,6 @@ void io_process(float io_factor){
 	time(&end);
 	double diff;
 	diff=difftime(end,start);
-	printf("Delta Time IO: %.21f\n",diff);
+	printf("Delta Time IO Mix: %.21f\n",diff);
 
 }
