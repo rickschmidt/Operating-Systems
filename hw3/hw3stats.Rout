@@ -1,0 +1,87 @@
+
+R version 2.9.2 (2009-08-24)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> zz<-read.csv("/Users/rickschmidt/Documents/Graduate School/OS/github/comp410-operating_systems-schmidt/hw3/hw3stats.csv",head=TRUE,sep=",")
+> 
+> print(zz)
+   io cpu mix total.exec.time delta.time.mix
+1  27 204  18             204            211
+2  27 205  18             205            211
+3  26 202  18             203            209
+4  27 204  18             204            210
+5  27 205  18             206            212
+6  27 207  18             207            208
+7  27 202  19             203            210
+8  27 205  18             205            211
+9  27 205  19             205            211
+10 27 207  19             207            212
+11 NA  NA  NA              NA             NA
+12 NA  NA  NA              NA             NA
+13 27 200  18             201            209
+14 26 202  17             202            209
+15 26 202  18             202            209
+16 25 206  17             206            211
+17 27 206  19             206            211
+18 26 203  18             203            210
+19 26 203  18             203            210
+20 26 205  17             205            210
+21 27 205  18             205            210
+22 25 203  17             204            209
+23 NA  NA  NA              NA             NA
+24 NA  NA  NA              NA             NA
+25 35 201  25             202            205
+26 37 202  27             203            206
+27 37 201  25             202            205
+28 36 201  25             202            205
+29 36 203  24             204            206
+30 36 204  26             205            206
+31 36 205  24             205            206
+32 37 204  26             205            207
+33 36 202  26             203            206
+34 36 203  25             204            206
+35 NA  NA  NA              NA             NA
+36 NA  NA  NA              NA             NA
+37 67 204  17             205            208
+38 70 206  17             206            209
+39 74 205  19             205            208
+40 69 207  17             207            209
+41 71 208  18             208            209
+42 63 208  17             208            210
+43 77 208  22             208            209
+44 64 208  17             208            209
+45 69 210  17             210            210
+46 77 211  22             211            211
+47 NA  NA  NA              NA             NA
+48 NA  NA  NA              NA             NA
+49 26 206  17             207            207
+50 25 206  17             206            206
+51 25 207  17             207            207
+52 26 208  17             208            208
+53 26 206  17             208            208
+54 26 207  17             207            207
+55 26 207  17             208            208
+56 26 206  18             207            207
+57 26 207  18             208            208
+58 26 206  17             206            206
+> 
+> proc.time()
+   user  system elapsed 
+  0.443   0.029   0.467 

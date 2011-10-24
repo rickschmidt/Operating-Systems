@@ -1,0 +1,1 @@
+zz<-read.csv("/Users/rickschmidt/Documents/Graduate School/OS/github/comp410-operating_systems-schmidt/hw3/hw3stats.csv",head=TRUE,sep=",")
