@@ -112,27 +112,52 @@ legenddata=c("NR_SCHED_QUEUE=32","NR_SCHED_QUEUE=64","USER_QUANTUM=800","USER_QU
 
 par(mar=c(10,4,4,2) + 0.1)   
 par(xpd=TRUE) 
-plot(y1$cpu,ylim=range(cpus),main="CPU Times",col="red",xlab="Iterations",ylab="CPU Time (seconds)", type="l")
+plot(y1$cpu,ylim=range(cpus),main="CPU Times (In sample order)",col="red",xlab="Iterations",ylab="CPU Time (seconds)", type="l")
 lines(c(1:10),y2$cpu,type="l",col="green")
 lines(c(1:10),y3$cpu,type="l",col="blue")
 lines(c(1:10),y4$cpu,type="l",col="purple")
 lines(c(1:10),y5$cpu,type="l")
 legend(1,min(range(cpus)-2.7),legenddata,col=colors,lty=c(1,1,1,1,1))
-                           
-plot(y1$io,ylim=range(ios),col="red",type="l",main="IO Times",xlab="Iterations",ylab="IO Time (seconds)")
+
+plot(sort(y1$cpu),ylim=range(cpus),main="CPU Times Sorted",col="red",ylab="CPU Time (seconds)", type="l")
+lines(c(1:10),sort(y2$cpu),type="l",col="green")
+lines(c(1:10),sort(y3$cpu),type="l",col="blue")
+lines(c(1:10),sort(y4$cpu),type="l",col="purple")
+lines(c(1:10),sort(y5$cpu),type="l")
+legend(1,min(range(cpus)-2.7),legenddata,col=colors,lty=c(1,1,1,1,1))
+
+##############################                           
+plot(y1$io,ylim=range(ios),col="red",type="l",main="IO Times (In sample order)",xlab="Iterations",ylab="IO Time (seconds)")
 lines(c(1:10),y2$io,type="l",col="green")
 lines(c(1:10),y3$io,type="l",col="blue")
 lines(c(1:10),y4$io,type="l",col="purple")
 lines(c(1:10),y5$io,type="l")
 legend(1,min(range(ios)-13),legenddata,col=colors,lty=c(1,1,1,1,1))
 
-plot(y1$mix,ylim=range(mixes),col="red",type="l",main="Mix Times",xlab="Iterations",ylab="Mix Time (seconds)")
+plot(sort(y1$io),ylim=range(ios),col="red",type="l",main="IO Times Sorted",ylab="IO Time (seconds)")
+lines(c(1:10),sort(y2$io),type="l",col="green")
+lines(c(1:10),sort(y3$io),type="l",col="blue")
+lines(c(1:10),sort(y4$io),type="l",col="purple")
+lines(c(1:10),sort(y5$io),type="l")
+legend(1,min(range(ios)-13),legenddata,col=colors,lty=c(1,1,1,1,1))
+
+#############################
+
+plot(y1$mix,ylim=range(mixes),col="red",type="l",main="Mix Times (In sample order)",xlab="Iterations",ylab="Mix Time (seconds)")
 lines(c(1:10),y2$mix,type="l",col="green")
 lines(c(1:10),y3$mix,type="l",col="blue")
 lines(c(1:10),y4$mix,type="l",col="purple")
 lines(c(1:10),y5$mix,type="l")
 legend(1,min(range(mixes)-2.5),legenddata,col=colors,lty=c(1,1,1,1,1))
 
+
+plot(sort(y1$mix),ylim=range(mixes),col="red",type="l",main="Mix Times Sorted",ylab="Mix Time (seconds)")
+lines(c(1:10),sort(y2$mix),type="l",col="green")
+lines(c(1:10),sort(y3$mix),type="l",col="blue")
+lines(c(1:10),sort(y4$mix),type="l",col="purple")
+lines(c(1:10),sort(y5$mix),type="l")
+legend(1,min(range(mixes)-2.5),legenddata,col=colors,lty=c(1,1,1,1,1))
+#############################
 barplot(sdcpu,main="SD CPU",col=colors,legend=legenddata)
 barplot(sdio,main="SD IO",col=colors,legend=legenddata)
 barplot(sdmix,main="SD MIX",col=colors,legend=legenddata)
@@ -140,3 +165,6 @@ barplot(meancpu,main="MEAN CPU",col=colors,legend=legenddata)
 barplot(meanio,main="MEAN IO",col=colors,legend=legenddata)
 barplot(meanmix,main="MEAN MIX",col=colors,legend=legenddata)
       
+cpumeans=c(mean(y1$cpu),mean(y2$cpu),mean(y3$cpu),mean(y4$cpu),mean(y5$cpu))
+
+plot(sort(cpumeans),type="l")
