@@ -151,13 +151,27 @@ char list[10]="list";
 	if(strcmp(argv[1],time1)==0){
 		pid_t timePid=atoi(argv[2]);
 		FILE *fp;
-		fp = popen("ps ", "r");
+		// fp = popen("ps |grep .(\d.[\d].)","r");
+		// printf("grepping is %s\n",// popen("ps |grep '-bash'","r"));
+		fp=popen("ps","r");
 		char timet[100];
 		char *token;
+		char *token2;
+		int counter=0;
 		while ( fgets( line, sizeof line, fp)){  //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
-			token=strtok(line," ");
-		
-		printf("timet %s\n",token);
+			if ((token = strtok(line, " ")) != NULL) {
+				// while ((token2 = strtok(NULL, " ")) != NULL){
+					printf("%d %s\n", counter,token);
+				// }
+				
+			    			// do {
+			    			// 			        			printf("%d %s\n", counter,token);
+			    			// 					    } while ((token = strtok(NULL, " ")) != NULL);
+						}
+			// token=strtok(line,"\t");
+						counter++;
+			
+			printf("\n\n");
 	}
 	}
 
