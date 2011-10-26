@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
 				int i;
 				FILE *fp2;
 				fp2=fopen("pid_list","w");
-				for(i=0;i<sizeof oldpids;i++){
+				for(i=0;i<10;i++){
 					printf("old pids are %d \n",oldpids[i]);
 
 					if(oldpids[i]!=0){
@@ -104,24 +104,17 @@ int main(int argc, char* argv[]) {
 
 	if(strcmp(argv[1],list)==0){
 		printf("list\n");
-		// close(fd[1]);
-
 		fp=fopen("pid_list","r");
 		char line[100];
 			while(fgets(line, sizeof line, fp) != NULL)
    			{
-				printf("line: %s\n",line);
+				printf("PID: %s\n",line);
 
 
 	   }
 				fclose(fp);
 		int i;
 		printf("Done printing\n");
-		// for(i=0; i<sizeof(listofpids);i++){
-		// 	printf("listofpids in list:  %d\n",listofpids[i]);
-		// }
-		// wait(10);
-		// exit(0);
 	}
 
 	if(strcmp(argv[1],wait1)==0){
@@ -129,8 +122,9 @@ int main(int argc, char* argv[]) {
 		printf("argPid is %d\n",argPid);
 		int waitStatus;
 		printf("pidholder %d\n",pidholder);
-		pid_t waitp=waitpid(argPid,NULL,WNOHANG);
-		printf("wait status %d\n",waitp);
+		pid_t waitp=waitpid(argPid,&waitStatus,0);
+		printf("waitp %d\n",waitp);
+		printf("waitstatus %d\n",waitStatus);
 		if (waitp>0){
 			printf("greater than zero\n");			
 		}
@@ -155,9 +149,8 @@ int main(int argc, char* argv[]) {
 	}
 
 	if(strcmp(argv[1],kill)==0){
-		if(strcmp(argv[2],pid)==0){
-			printf("kill PID");
-		}
+		pid_t toKill=atoi(argv[2]);
+		kill(toKill,SIGKILL);
 
 	}
 
