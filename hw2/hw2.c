@@ -149,10 +149,16 @@ char list[10]="list";
 
 	}
 	if(strcmp(argv[1],time1)==0){
-		if(strcmp(argv[2],pid)==0){
-			printf("time PID");
-		}
-
+		pid_t timePid=atoi(argv[2]);
+		FILE *fp;
+		fp = popen("ps ", "r");
+		char timet[100];
+		char *token;
+		while ( fgets( line, sizeof line, fp)){  //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
+			token=strtok(line," ");
+		
+		printf("timet %s\n",token);
+	}
 	}
 
 	if(strcmp(argv[1],kill1)==0){
