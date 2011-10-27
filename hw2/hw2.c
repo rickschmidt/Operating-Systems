@@ -128,6 +128,9 @@ char list[10]="list";
 		pid_t argPid=atoi(argv[2]);
 		printf("argPid is %d\n",argPid);
 		int waitStatus;
+		while(kill(argPid,SIGCHLD)==0){
+			
+		}
 		printf("pidholder %d\n",pidholder);
 		pid_t waitp=waitpid(argPid,&waitStatus,0);
 		printf("waitp %d\n",waitp);
@@ -151,27 +154,37 @@ char list[10]="list";
 	if(strcmp(argv[1],time1)==0){
 		pid_t timePid=atoi(argv[2]);
 		FILE *fp;
+
 		// fp = popen("ps |grep .(\d.[\d].)","r");
 		// printf("grepping is %s\n",// popen("ps |grep '-bash'","r"));
 		fp=popen("ps","r");
-		char timet[100];
-		char *token;
-		char *token2;
-		int counter=0;
-		while ( fgets( line, sizeof line, fp)){  //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
-			if ((token = strtok(line, " ")) != NULL) {
-				// while ((token2 = strtok(NULL, " ")) != NULL){
-					printf("%d %s\n", counter,token);
-				// }
+			char timet[100];
+			char *token;
+			char *token2;
+			char *token3;
+			int counter=0;
+			while ( fgets( line, sizeof line, fp)){ 
+				token=strchr(line,':');
+				int position=token-line+1;
+				strncpy(token3,token,4);
+				printf("token3 %s\n",token3);
 				
-			    			// do {
-			    			// 			        			printf("%d %s\n", counter,token);
-			    			// 					    } while ((token = strtok(NULL, " ")) != NULL);
-						}
-			// token=strtok(line,"\t");
-						counter++;
-			
-			printf("\n\n");
+				
+				 //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
+				// if ((token = strtok(line, " \t")) != NULL) {
+				// 				// while ((token2 = strtok(NULL, " ")) != NULL){
+				// 					// printf("%d %s\n", counter,token);
+				// 				// }
+				// 				
+				// 			    			do {
+				// 			    					printf("%d %s\n", counter,token);
+				// 								} while ((token = strtok(NULL, " \t")) != NULL);
+				// 						}
+				// 			// token=strtok(line,"\t");
+				// 						counter++;
+				// 			
+				// 			printf("\n\n");
+				
 	}
 	}
 
