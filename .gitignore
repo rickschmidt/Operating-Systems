@@ -1,4 +1,4 @@
-.o
+*.o
 hw3/hw3cpu
 hw3/hw3io
 hw3/hw3mix

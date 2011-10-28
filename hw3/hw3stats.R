@@ -97,10 +97,13 @@ print(mean5mix)
 sdcpu=c(sd1cpu,sd2cpu,sd3cpu,sd4cpu,sd5cpu)
 sdio=c(sd1io,sd2io,sd3io,sd4io,sd5io)
 sdmix=c(sd1mix,sd2mix,sd3mix,sd4mix,sd5mix)
+
 meancpu=c(mean1cpu,mean2cpu,mean3cpu,mean4cpu,mean5cpu)
 meanio=c(mean1io,mean2io,mean3io,mean4io,mean5io)
 meanmix=c(mean1mix,mean2mix,mean3mix,mean4mix,mean5mix)
+
 colors=c("red","green","blue","purple","black")
+
 opts=c(y1$cpu,y2$cpu,y3$cpu,y4$cpu,y5$cpu)
 cpus=c(y1$cpu,y2$cpu,y3$cpu,y4$cpu,y5$cpu)
 ios=c(y1$io,y2$io,y3$io,y4$io,y5$io)
@@ -126,7 +129,8 @@ lines(c(1:10),sort(y4$cpu),type="l",col="purple")
 lines(c(1:10),sort(y5$cpu),type="l")
 legend(1,min(range(cpus)-2.7),legenddata,col=colors,lty=c(1,1,1,1,1))
 
-##############################                           
+##############################     
+                      
 plot(y1$io,ylim=range(ios),col="red",type="l",main="IO Times (In sample order)",xlab="Iterations",ylab="IO Time (seconds)")
 lines(c(1:10),y2$io,type="l",col="green")
 lines(c(1:10),y3$io,type="l",col="blue")
@@ -157,7 +161,9 @@ lines(c(1:10),sort(y3$mix),type="l",col="blue")
 lines(c(1:10),sort(y4$mix),type="l",col="purple")
 lines(c(1:10),sort(y5$mix),type="l")
 legend(1,min(range(mixes)-2.5),legenddata,col=colors,lty=c(1,1,1,1,1))
+
 #############################
+
 barplot(sdcpu,main="SD CPU",col=colors,legend=legenddata)
 barplot(sdio,main="SD IO",col=colors,legend=legenddata)
 barplot(sdmix,main="SD MIX",col=colors,legend=legenddata)
