@@ -54,6 +54,10 @@ void updateList(FILE *fp,char *line,char *pid,pid_t pidholder){
 				}
 				fclose(fp2);
 }
+
+void waitfor(){
+	printf("waitwaitwaitwait\n");
+}
 int main(int argc, char* argv[]) { 
 char list[10]="list";
 	char wait1[10]="wait";
@@ -81,13 +85,13 @@ char list[10]="list";
 	for(i=0; i < argc; i++) printf("argv %d is: %s\t",i, argv[i]); printf("\n");
 
 
-	
+
 	
 	if(strcmp(argv[1],sleep1)==0){
 		printf("sleeping for %s\n",argv[2]);
 		//sigiot alias for SIGABRT
 		//When abort signal is received; ignore it
-		signal(SIGIOT,SIG_IGN);
+		signal(SIGIO,SIG_IGN);	
 
 		pidholder=fork();
 		printf("pidholder %d\n",pidholder);
@@ -126,25 +130,28 @@ char list[10]="list";
 
 	if(strcmp(argv[1],wait1)==0){
 		pid_t argPid=atoi(argv[2]);
+		if(argv[3]!=NULL){
+			if(strcmp(argv[3],"list")){
+				FILE *fp;
+				fp=fopen("pid_list","r");
+				char line[10];
+				while(fgets(line,sizeof line,fp)!=NULL){
+					
+				}
+			}	
+		}else{
 		printf("argPid is %d\n",argPid);
 		int waitStatus;
-		while(kill(argPid,SIGCHLD)==0){
-			
-		}
-		printf("pidholder %d\n",pidholder);
-		pid_t waitp=waitpid(argPid,&waitStatus,0);
-		printf("waitp %d\n",waitp);
-		printf("waitstatus %d\n",waitStatus);
-		if (waitp>0){
-			printf("greater than zero\n");			
-		}
-		else if(waitp<0){
-			printf("less than zero\n");
-		}
-	
+		// while(kill(argPid,SIGCHLD)==0){
+		// 	//works
+		// }
+		while(waitStatus!=-1){
+			waitStatus=kill(argPid,SIGIO);
 		
-	
-
+		}
+		printf("waitStatus %d\n",waitStatus);
+		}
+		
 	}
 
 	if(strcmp(argv[1],pid)==0){
