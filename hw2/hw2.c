@@ -5,6 +5,7 @@
 // #include <fcntl.h>
 #include <signal.h>
 #include <sys/wait.h>
+#include <time.h>
 char sleep1[100]="sleep";
 	
 
@@ -87,7 +88,7 @@ char list[10]="list";
 
 	
 	if(strcmp(argv[1],sleep1)==0){
-		signal(SIGIO,SIG_IGN);	
+		signal(SIGUSR1,SIG_IGN);	
 		signal(SIGINT,killed);
 		pidholder=fork();
 	
@@ -143,7 +144,7 @@ char list[10]="list";
 					pid_t linepid=atoi(line);
 					if(ferror(fp))printf("Error in stream\n");
 					while(waitStatus!=-1){						
-						waitStatus=kill(linepid,SIGIO);
+						waitStatus=kill(linepid,SIGUSR1);
 
 					}
 						fclose(fp);
@@ -156,52 +157,49 @@ char list[10]="list";
 		int waitStatus;
 		printf("Waiting for process %d...\n",argPid);
 		while(waitStatus!=-1){
-			waitStatus=kill(argPid,SIGIO);
+			waitStatus=kill(argPid,SIGUSR1);
 		}
 		printf("Done waiting for process %d.\n",argPid);
 		}
 	}
 	}
 
-	if(strcmp(argv[1],pid)==0){
-		printf("pid");
 
-	}
 	if(strcmp(argv[1],time1)==0){
 		pid_t timePid=atoi(argv[2]);
 		FILE *fp;
 
 		// fp = popen("ps |grep .(\d.[\d].)","r");
 		// printf("grepping is %s\n",// popen("ps |grep '-bash'","r"));
-		fp=popen("ps","r");
-			char timet[100];
-			char *token;
-			char *token2;
-			char *token3;
-			int counter=0;
-			while ( fgets( line, sizeof line, fp)){ 
-				token=strchr(line,':');
-				int position=token-line+1;
-				strncpy(token3,token,4);
-				printf("token3 %s\n",token3);
-				
-				
-				 //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
-				// if ((token = strtok(line, " \t")) != NULL) {
-				// 				// while ((token2 = strtok(NULL, " ")) != NULL){
-				// 					// printf("%d %s\n", counter,token);
-				// 				// }
-				// 				
-				// 			    			do {
-				// 			    					printf("%d %s\n", counter,token);
-				// 								} while ((token = strtok(NULL, " \t")) != NULL);
-				// 						}
-				// 			// token=strtok(line,"\t");
-				// 						counter++;
-				// 			
-				// 			printf("\n\n");
-				
-	}
+		// fp=popen("ps","r");
+		// 		char timet[100];
+		// 		char *token;
+		// 		char *token2;
+		// 		char *token3;
+		// 		int counter=0;
+		// 		while ( fgets( line, sizeof line, fp)){ 
+		// 			token=strchr(line,':');
+		// 			int position=token-line+1;
+		// 			strncpy(token3,token,4);
+		// 			printf("token3 %s\n",token3);
+		// 			
+		// 			
+		// 			 //fgets grabs from the file stream until a \n character is reached and stores the result in line.  
+		// 			// if ((token = strtok(line, " \t")) != NULL) {
+		// 			// 				// while ((token2 = strtok(NULL, " ")) != NULL){
+		// 			// 					// printf("%d %s\n", counter,token);
+		// 			// 				// }
+		// 			// 				
+		// 			// 			    			do {
+		// 			// 			    					printf("%d %s\n", counter,token);
+		// 			// 								} while ((token = strtok(NULL, " \t")) != NULL);
+		// 			// 						}
+		// 			// 			// token=strtok(line,"\t");
+		// 			// 						counter++;
+		// 			// 			
+		// 			// 			printf("\n\n");
+		// 			
+		// }
 	}
 
 	if(strcmp(argv[1],kill1)==0){
