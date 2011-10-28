@@ -55,8 +55,8 @@ void updateList(FILE *fp,char *line,char *pid,pid_t pidholder){
 				fclose(fp2);
 }
 
-void waitfor(){
-	printf("waitwaitwaitwait\n");
+void killed(){
+	printf("Killed\n");
 }
 int main(int argc, char* argv[]) { 
 char list[10]="list";
@@ -92,7 +92,7 @@ char list[10]="list";
 		//sigiot alias for SIGABRT
 		//When abort signal is received; ignore it
 		signal(SIGIO,SIG_IGN);	
-
+		signal(SIGINT,killed);
 		pidholder=fork();
 		printf("pidholder %d\n",pidholder);
 	
@@ -135,8 +135,21 @@ char list[10]="list";
 				FILE *fp;
 				fp=fopen("pid_list","r");
 				char line[10];
+				int waitStatus;
+				int i=0;
+				int * lines = NULL;
+				int *morelines;
+				printf("wait list\n");
 				while(fgets(line,sizeof line,fp)!=NULL){
-					
+					i++; 
+					morelines=realloc(lines, i*sizeof(int)); 
+					lines=morelines;
+					lines[i-1] = line; 
+
+
+				}
+				for(i=0;i< sizeof lines; i++){
+					printf("lines: %d\n",lines[i]);
 				}
 			}	
 		}else{
@@ -197,7 +210,7 @@ char list[10]="list";
 
 	if(strcmp(argv[1],kill1)==0){
 		pid_t toKill=atoi(argv[2]);
-		int status=kill(toKill,SIGKILL);
+		int status=kill(toKill,SIGINT);
 		FILE *fp;
 		char line[20];
 			char pid[10]="PID";
