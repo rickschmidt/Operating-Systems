@@ -168,16 +168,31 @@ char list[10]="list";
 	if(strcmp(argv[1],time1)==0){
 		pid_t timePid=atoi(argv[2]);
 		FILE *fp;
+		
+		char command[100];
+		sprintf(command,"ps |grep ^%d",timePid);
+		char *timepos;
+		fp = popen(command,"r");
 
-		// fp = popen("ps |grep .(\d.[\d].)","r");
+		
+
 		// printf("grepping is %s\n",// popen("ps |grep '-bash'","r"));
 		// fp=popen("ps","r");
 		// 		char timet[100];
 		// 		char *token;
 		// 		char *token2;
 		// 		char *token3;
+			char line[100];
 		// 		int counter=0;
-		// 		while ( fgets( line, sizeof line, fp)){ 
+				while ( fgets( line, sizeof line, fp)){ 
+				timepos=strtok(line," \t");
+				while (timepos != NULL)
+				  {
+					if(strchr(timepos,':')!=NULL) printf("Time: %s\n",timepos);
+				    timepos = strtok (NULL, " \t");
+				  }
+
+				}
 		// 			token=strchr(line,':');
 		// 			int position=token-line+1;
 		// 			strncpy(token3,token,4);
