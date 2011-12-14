@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 	<head>
-<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Unna' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Unna' rel='stylesheet' type='text/css'>
 		<script src="jquery-1.6.2.min.js" type="text/javascript" charset="utf-8">
 </script>
 		<script src="presentation.js" type="text/javascript" charset="utf-8">
@@ -13,77 +13,254 @@
 	<body>
 		<div id="wrapper">
 			<div id="buttons">
-				<button id="previous" type="submit" name="prev" id="previous" style="border: 0; background: transparent">
+			<button id="previous" type="submit" name="prev" id="previous" style="border: 0; background: transparent">
 					<span style="float:right;" class="next_left"></span>
 					</button>
 				<button  id="next"type="submit" name="prev" id="previous" style="border: 0; background: transparent">
 					<span style="float:right;" class="next_right" ></span>
 				</button>
 			</div>
-			<h1>NextStep</h1>
-			<img src="images/next_dock.png" style="float:right">
-			<img src="images/next_menu.png" style="float:left">
-			<div id="viewport" >
-
+			<h1>
+				NextStep
+			</h1><img src="images/next_dock.png" style="float:right"> <img src="images/next_menu.png" style="float:left">
+			<div id="viewport">
 				<div class="slide current">
-					<p>Slide 1</p>
+					<h1 id="history">
+						History
+					</h1>
+					<ul>
+						<li>NeXT Computer was founded by Steve Jobs after being ousted from Apple.
+						</li>
+						<li>They developed an operating system that originally ran on NeXT hardware only
+						</li>
+						<li>The computers themselves were designed to be work stations, high end machines that were suitable for scientific work in academia and also to be affordable to college students (still pretty expensive).<br>
+						</li>
+					</ul><img src="images/nextcube.jpg" width="257" height="176" style="padding-left:100px">
 				</div>
 				<div class="slide hidden">
-					<h1>Mach Kernel</h1>
+					<h1 id="history">
+						History
+					</h1>
 					<ul>
-					<li>The Next kernel is a version of the Mach kernel originally developed by CMU and later enhanced by Next.</li>
-					<li>Mach supports distributed file access and network interprocess communication</li>
-					<li><p>Although the version of mach used did not support the unix philosophy of &#8220;everything as a file&#8221; it provided unix compatibility that was transparent to the user.</p></li>
-
+						<li>In 1993 the computer stopped manufacturing computers and became NeXT Software.
+						</li>
+						<li>The operating system and development tools were sold under the name NeXTStep and later some parts were named openStep
+						</li>
+						<li>Eventually the operating system was ported from motorola to intel hardware.
+						</li>
+						<li>Sir Tim Berners-Lee wrote the first web browser and web server on the NeXT platform.
+						</li>
+					</ul><img src="images/next_station.jpg" width="220" height="217" style="padding-left:100px">
+				</div>
+				<div class="slide hidden">
+					<h1>
+						Mach Kernel
+					</h1>
+					<ul>
+						<li>The Next kernel is a version of the Mach kernel originally developed by CMU and later enhanced by Next.
+						</li>
+						<li>Mach supports distributed file access and network interprocess communication
+						</li>
+						<li>Although the version of mach used did not support the unix philosophy of "everything as a file" it provided unix compatibility that was transparent to the user.
+						</li>
 					</ul>
-					<h3>Developer Docs</h3>
-
-					<p style="float:center"><em>&#8220;Mach provides the following features not found in UNIX 4.3BSD:
-					<ul><li>Multiple tasks, each with a large, paged virtual memory space</li>
-					<li>Multiple threads of execution within each task, with a flexible scheduling facility</li>
-					        <li>Flexible sharing of memory between tasks</li>
-					        <li>Efficient and consistent message-based interprocess communication</li>
-					        <li>Memory-mapped files</li>
-					        <li>Transparent network extensibility</li>
-					        <li>A flexible, capability-based approach to security and protection</li>
-					        <li>Support for multiprocessor scheduling&#8221;</li></ul></em></p>
-				</div>
-				<div class="slide hidden">
-					<h1>Decision to use Mach</h1>
-
-					<p>Next wanted to use a kernel that was well represented in business and academia.  The kernel needed to support multi tasking and multiple users and also be network compatible.  </p>
-
-					<p>Pure UNIX supported all of these ideals but their position was that mach provided better performance and supported future enhancements.  Since there was a unix compatible layer in mach the choice was clear.  </p>
-
-					<p>Over the years UNIX grew and grew supporting more features that caused a performance hit and mach was billed as a microkernel. </p>
-					
-					<p>The mach kernel itself is small due to the fact that anything that anything that could be put in user space was.  The kernel itself supported only the creation of user tasks and communication between them using ports</p>
-					
-				</div>
-				<div class="slide hidden">
-					<h1 id="memory">Memory</h1>
-
+					<h3>
+						Developer Docs
+					</h3>
+					<p style="float:center">
+						<em>"Mach provides the following features not found in UNIX 4.3BSD:</em>
+					</p>
 					<ul>
-					<li>Next used mapped memory and virtual memory</li>
-					<li>Each task had 4GBs of mapped virtual memory to operate in</li>
-					<li>Next used what it called <em>demand paging</em> 
-					<ul>
-					<li>Only the page that references the address of the active process needs to be in physical memory. </li>
-					<li>If not the kernel would if necessary remove the oldest referenced page from memory and move then move the new one in</li>
-					</ul></li>
-					<li><p>The developer documentation claims that this process allows <em>extremely large</em> applications to run on next hardware.</p></li>
-					<li><p>Memory was conserved in mach thorough its implementation of <code>fork()</code></p></li>
-					<li>Instead of copying all of a parents address space to the child memory was only copied when a child requested </li>
+						<li>
+							<em>Multiple tasks, each with a large, paged virtual memory space</em>
+						</li>
+						<li>
+							<em>Multiple threads of execution within each task, with a flexible scheduling facility</em>
+						</li>
+						<li>
+							<em>Flexible sharing of memory between tasks</em>
+						</li>
+						<li>
+							<em>Efficient and consistent message-based interprocess communication</em>
+						</li>
+						<li>
+							<em>Memory-mapped files</em>
+						</li>
+						<li>
+							<em>Transparent network extensibility</em>
+						</li>
+						<li>
+							<em>A flexible, capability-based approach to security and protection</em>
+						</li>
+						<li>
+							<em>Support for multiprocessor scheduling"</em>
+						</li>
 					</ul>
-					
 				</div>
 				<div class="slide hidden">
-					<p>##Five</p>
+					<h1>
+						Decision to use Mach
+					</h1>
+					<p>
+						Next wanted to use a kernel that was well represented in business and academia. The kernel needed to support multi tasking and multiple users and also be network compatible.
+					</p>
+					<p>
+						Pure UNIX supported all of these ideals but their position was that mach provided better performance and supported future enhancements. Since there was a unix compatible layer in mach the choice was clear.
+					</p>
+					<p>
+						Over the years UNIX grew and grew supporting more features that caused a performance hit and mach was billed as a microkernel.
+					</p>
+					<p>
+						The mach kernel itself is small due to the fact that anything that anything that could be put in user space was. The kernel itself supported only the creation of user tasks and communication between them using ports
+					</p>
 				</div>
 				<div class="slide hidden">
-					<p>##Six</p>
+					<h1 id="memory">
+						Memory
+					</h1>
+					<ul>
+						<li>Next used mapped memory and virtual memory
+						</li>
+						<li>Each task had 4GBs of mapped virtual memory to operate in
+						</li>
+						<li>Next used what it called <em>demand paging</em>
+							<ul>
+								<li>Only the page that references the address of the active process needs to be in physical memory.
+								</li>
+								<li>If not the kernel would if necessary remove the oldest referenced page from memory and move then move the new one in
+								</li>
+							</ul>
+						</li>
+						<li>
+							<p>
+								The developer documentation claims that this process allows <em>extremely large</em> applications to run on next hardware.
+							</p>
+						</li>
+						<li>
+							<p>
+								Memory was conserved in mach thorough its implementation of <code>fork()</code>
+							</p>
+						</li>
+						<li>Instead of copying all of a parents address space to the child memory was only copied when a child requested
+						</li>
+					</ul>
 				</div>
-			</div>
+				<div class="slide hidden">
+					<h1 id="mutual_exclusion">
+						Mutual Exclusion
+					</h1>
+					<ul>
+						<li>
+							<p>
+								Next through Mach uses a c style mutex lock for memory protection
+							</p>
+						</li>
+						<li style="list-style: none">
+							<pre>
+<code>
+mutex_lock(m);
+count += 1;
+mutex_unlock(m);
+                        </code>
+</pre>
+						</li>
+						<li>
+							<p>
+								There was also a framework called Mach Kit which provided a form of mutual exclusion
+							</p>
+						</li>
+					</ul>
+					<h3>
+						Mach Kit
+					</h3>
+					<p>
+						"Define various kinds of locks that can be useful for protecting critical sections of code in drivers and multithreaded applications"
+					</p>
+					<ul>
+						<li>NXSpinLock, NXConditionLock, NXLock, NXRecursiveLock
+						</li>
+					</ul>
+				</div>
+				<div class="slide hidden">
+					<h1 id="scheduler">
+						Scheduler
+					</h1>
+					<ul>
+						<li>Mach uses a time sharing scheduler (mainly)
+						</li>
+						<li>Each thread is assigned a priority between 0-31
+						</li>
+						<li>Blocking or long running threads have their priority decreased
+						</li>
+						<li>Threads have three priorities (base, current, max)
+						</li>
+						<li>Along with the time sharing policy next had an incomplete implementation for interactive scheduling and a non recommended fixed scheduling policy.
+						</li>
+					</ul>
+				</div>
+				<div class="slide hidden">
+					<h1 id="filesystem">
+						FileSystem
+					</h1>
+					<ul>
+						<li>NextStep used the Unix File System (UFS)
+						</li>
+						<li>Continued support through current versions of OS X (10.5+ cannot be installed on UFS)
+						</li>
+					</ul>
+				</div>
+				<div class="slide hidden">
+					<h1 id="webobjects">
+						Webobjects
+					</h1>
+					<ul>
+						<li>A major component of the Next Operating System was WebObjects
+						</li>
+						<li>WebObjects was a server technology that support Object Oriented programming in either Java or Objective C
+						</li>
+						<li>WebObjects was adopted by several large companies in the mid 90s but adoption quickly slowed after Apple's acquistion of NeXT
+						</li>
+						<li>Originally a license was $50K
+						</li>
+						<li>Apple included them in the Dev Tools for free in 2005 and later dropped support.
+						</li>
+						<li>Apple used WebObjects to host the iTunes Stores (Rumor: Dropped in 2009)
+						</li>
+					</ul>
+				</div>
+				<div class="slide hidden">
+					<h1 id="characteristics">
+						Characteristics
+					</h1>
+					<ul>
+						<li>Objective C along with C,C++
+						</li>
+						<li>Object Oriented Application Development
+						</li>
+						<li>WYSIWYG Interface Builder
+						</li>
+					</ul>
+				</div>
+				<div class="slide hidden">
+					<h1 id="coda">
+						Coda
+					</h1>
+					<ul>
+						<li>Apple on the brink of bankruptcy purchased Next in December of 1996
+						</li>
+						<li>NeXT was no longer developed after this although betas are in circulation of the 4.0 release
+						</li>
+						<li>In 1996 Apple was losing big time to Windows. OS 9 supported cooperative multitasking and was really only or a single user.
+						</li>
+						<li>There was a project within Apple to write an all new Operating System codenamed "Project Copland" which would support many of the features in NeXT
+						</li>
+						<li>Copland was scrapped and work began OS X
+						</li>
+						<li>Cocoa and Cocoa Touch classes are all still prefixed with the NS namespace.
+						</li>
+					</ul>
+				</div>
+			</div><img src="images/next_dock_bottom.png">
 		</div>
 	</body>
 </html>
