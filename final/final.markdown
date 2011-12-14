@@ -69,3 +69,7 @@
 * There was a project within Apple to write an all new Operating System codenamed "Project Copland" which would support many of the features in NeXT
 * Copland was scrapped and work began OS X 
 * Cocoa and Cocoa Touch classes are all still prefixed with the NS namespace.
+
+
+#References
+* GNUSTEP

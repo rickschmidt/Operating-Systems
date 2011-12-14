@@ -25,6 +25,9 @@
 			</h1><img src="images/next_dock.png" style="float:right"> <img src="images/next_menu.png" style="float:left">
 			<div id="viewport">
 				<div class="slide current">
+					<p id="googlefont" style="padding-left:100px;padding-top:100px;font-size:36pt">NeXT,<br> NeXT Computer,<br> NeXTStep</p>
+				</div>
+				<div class="slide hidden">
 					<h1 id="history">
 						History
 					</h1>
@@ -33,7 +36,7 @@
 						</li>
 						<li>They developed an operating system that originally ran on NeXT hardware only
 						</li>
-						<li>The computers themselves were designed to be work stations, high end machines that were suitable for scientific work in academia and also to be affordable to college students (still pretty expensive).<br>
+						<li>The computers themselves were designed to be workstations, high end machines that were suitable for scientific work in academia and also to be affordable to college students (still pretty expensive).<br>
 						</li>
 					</ul><img src="images/nextcube.jpg" width="257" height="176" style="padding-left:100px">
 				</div>
@@ -42,7 +45,7 @@
 						History
 					</h1>
 					<ul>
-						<li>In 1993 the computer stopped manufacturing computers and became NeXT Software.
+						<li>In 1993 they stopped manufacturing computers and became NeXT Software focusing on the OS and Developer tools.
 						</li>
 						<li>The operating system and development tools were sold under the name NeXTStep and later some parts were named openStep
 						</li>
@@ -108,7 +111,7 @@
 						Pure UNIX supported all of these ideals but their position was that mach provided better performance and supported future enhancements. Since there was a unix compatible layer in mach the choice was clear.
 					</p>
 					<p>
-						Over the years UNIX grew and grew supporting more features that caused a performance hit and mach was billed as a microkernel.
+						Over the years UNIX grew and grew supporting more features that caused a performance hit and since mach was billed as a microkernel the choice was clear.
 					</p>
 					<p>
 						The mach kernel itself is small due to the fact that anything that anything that could be put in user space was. The kernel itself supported only the creation of user tasks and communication between them using ports
@@ -211,18 +214,18 @@ mutex_unlock(m);
 				</div>
 				<div class="slide hidden">
 					<h1 id="webobjects">
-						Webobjects
+						WebObjects
 					</h1>
 					<ul>
 						<li>A major component of the Next Operating System was WebObjects
 						</li>
-						<li>WebObjects was a server technology that support Object Oriented programming in either Java or Objective C
+						<li>WebObjects was a server technology that supported Object Oriented programming in either Java or Objective C
 						</li>
-						<li>WebObjects was adopted by several large companies in the mid 90s but adoption quickly slowed after Apple's acquistion of NeXT
+						<li>WebObjects was adopted by several large companies in the mid 90s but adoption quickly slowed after Apple's acquisition of NeXT
 						</li>
 						<li>Originally a license was $50K
 						</li>
-						<li>Apple included them in the Dev Tools for free in 2005 and later dropped support.
+						<li>Apple included WebObjects in the Dev Tools for free in 2005 and later dropped support.
 						</li>
 						<li>Apple used WebObjects to host the iTunes Stores (Rumor: Dropped in 2009)
 						</li>
@@ -258,7 +261,26 @@ mutex_unlock(m);
 						</li>
 						<li>Cocoa and Cocoa Touch classes are all still prefixed with the NS namespace.
 						</li>
+						<li>Many of the classes have implemented in the GNUStep Project</li>
 					</ul>
+				</div>
+				
+				<div class="slide hidden">
+					<h1>References</h1>
+					<ul>
+						<li>
+							"Cocoa Programming for Mac OS X" Aaron Hillegass 2008
+						</li>
+						<li>
+							Developer Docs for v3.3 http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/
+						</li>
+						<li>
+							WebObjects <br>http://www.mactech.com/articles/mactech/Vol.13/13.05/WebObjectsOverview<br>/index.html
+						</li>
+						
+
+					</ul>
+					<p>Source: https://github.com/rickschmidt/Operating-Systems/tree/master/final</p>
 				</div>
 			</div><img src="images/next_dock_bottom.png">
 		</div>

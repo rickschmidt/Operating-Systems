@@ -38,7 +38,9 @@ h1{
 	margin-left:15%;
 	font-family: 'Ubuntu', sans-serif;
 }
-
+#googlefont{
+	font-family: 'Ubuntu', sans-serif;
+}
 p ,li{
 	color:#2B2B2B;
 	font-size:15pt;
