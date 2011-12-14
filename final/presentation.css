@@ -3,6 +3,8 @@
 }
 
 #wrapper{
+	padding-top:50px;
+	padding-bottom:100px;
 	width:auto 0;
 	margin: auto 0;
 	background-color:#999;
@@ -41,3 +43,18 @@ h3{
 .ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons.png); }
 .ui-icon-seek-next { background-position: -32px -160px; }
 .ui-icon-seek-prev { background-position: -48px -160px; }
+.next_left{
+	background-image:url(images/next_left.png);
+	width:40px;
+	height:40px;
+}
+.next_right{
+	background-image:url(images/next_right.png);
+	width:40px;
+	height:40px;
+}
+
+#buttons{
+	position:absolute;
+	padding-left:700px;
+}

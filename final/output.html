@@ -12,14 +12,17 @@
 	</head>
 	<body>
 		<div id="wrapper">
-			<button id="previous" type="submit" name="prev" id="previous" style="border: 0; background: transparent">
-				<span style="float:right;" class="ui-icon ui-icon-seek-prev"></span>
+			<div id="buttons">
+				<button id="previous" type="submit" name="prev" id="previous" style="border: 0; background: transparent">
+					<span style="float:right;" class="next_left"></span>
+					</button>
+				<button  id="next"type="submit" name="prev" id="previous" style="border: 0; background: transparent">
+					<span style="float:right;" class="next_right" ></span>
 				</button>
-			<button  id="next"type="submit" name="prev" id="previous" style="border: 0; background: transparent">
-				<span style="float:right;" class="ui-icon ui-icon-seek-next" ></span>
-			</button>
-
+			</div>
 			<h1>NextStep</h1>
+			<img src="images/next_dock.png" style="float:right">
+			<img src="images/next_menu.png" style="float:left">
 			<div id="viewport" >
 
 				<div class="slide current">
@@ -46,10 +49,33 @@
 					        <li>Support for multiprocessor scheduling&#8221;</li></ul></em></p>
 				</div>
 				<div class="slide hidden">
-					<p>##Three</p>
+					<h1>Decision to use Mach</h1>
+
+					<p>Next wanted to use a kernel that was well represented in business and academia.  The kernel needed to support multi tasking and multiple users and also be network compatible.  </p>
+
+					<p>Pure UNIX supported all of these ideals but their position was that mach provided better performance and supported future enhancements.  Since there was a unix compatible layer in mach the choice was clear.  </p>
+
+					<p>Over the years UNIX grew and grew supporting more features that caused a performance hit and mach was billed as a microkernel. </p>
+					
+					<p>The mach kernel itself is small due to the fact that anything that anything that could be put in user space was.  The kernel itself supported only the creation of user tasks and communication between them using ports</p>
+					
 				</div>
 				<div class="slide hidden">
-					<p>##Four</p>
+					<h1 id="memory">Memory</h1>
+
+					<ul>
+					<li>Next used mapped memory and virtual memory</li>
+					<li>Each task had 4GBs of mapped virtual memory to operate in</li>
+					<li>Next used what it called <em>demand paging</em> 
+					<ul>
+					<li>Only the page that references the address of the active process needs to be in physical memory. </li>
+					<li>If not the kernel would if necessary remove the oldest referenced page from memory and move then move the new one in</li>
+					</ul></li>
+					<li><p>The developer documentation claims that this process allows <em>extremely large</em> applications to run on next hardware.</p></li>
+					<li><p>Memory was conserved in mach thorough its implementation of <code>fork()</code></p></li>
+					<li>Instead of copying all of a parents address space to the child memory was only copied when a child requested </li>
+					</ul>
+					
 				</div>
 				<div class="slide hidden">
 					<p>##Five</p>
