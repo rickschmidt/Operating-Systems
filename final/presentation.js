@@ -5,6 +5,7 @@ $(document).ready(function() {
 			var current=$('.current');
 			var next=current.next('.slide');
 			current.addClass('hidden').hide();
+			current.removeClass('current');
 			next.removeClass('hidden').addClass('current').show();
 
 		});
@@ -13,6 +14,7 @@ $(document).ready(function() {
 			var current=$('.current');
 			var prev=current.prev('.slide');
 			current.addClass('hidden').hide();
+			current.removeClass('current');
 			prev.removeClass('hidden').addClass('current').show();
 		});
 });
